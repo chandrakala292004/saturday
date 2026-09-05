@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register | College Dashboard</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <style>
+        /* ---------- Reset & Base ---------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #1a2a6c, #2d4373, #4a6fa5);
+            background-size: 300% 300%;
+            animation: gradientMove 14s ease infinite;
+            padding: 1.5rem;
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* ---------- Card ---------- */
+        .register-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 2rem;
+            padding: 2.5rem 2rem;
+            width: 100%;
+            max-width: 460px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s ease;
+        }
+
+        .register-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* ---------- Header ---------- */
+        .register-header {
+            text-align: center;
+            margin-bottom: 1.8rem;
+        }
+
+        .register-header .logo {
+            font-size: 2.8rem;
+            color: #1a2a6c;
+            margin-bottom: 0.2rem;
+        }
+
+        .register-header h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #1a2a6c;
+            letter-spacing: -0.5px;
+        }
+
+        .register-header p {
+            color: #5a6c8a;
+            font-size: 0.95rem;
+            margin-top: 0.2rem;
+        }
+
+        /* ---------- Form ---------- */
+        .form-group {
+            margin-bottom: 1.2rem;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            color: #2d4373;
+            margin-bottom: 0.35rem;
+            font-size: 0.88rem;
+        }
+
+        .form-group .input-icon {
+            position: absolute;
+            left: 1rem;
+            top: 2.5rem;
+            color: #4a6fa5;
+            font-size: 1rem;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem 1rem 0.8rem 2.8rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 1rem;
+            font-size: 0.95rem;
+            background: #f8faff;
+            transition: all 0.3s ease;
+            outline: none;
+            color: #1e293b;
+            appearance: none;
+            -webkit-appearance: none;
+        }
+
+        .form-group select {
+            padding-right: 2.5rem;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%234a6fa5' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 12px;
+            cursor: pointer;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: #4a6fa5;
+            background: white;
+            box-shadow: 0 0 0 4px rgba(74, 111, 165, 0.15);
+        }
+
+        .form-group input::placeholder {
+            color: #a0b3cc;
+        }
+
+        /* ---------- Password hint ---------- */
+        .password-hint {
+            font-size: 0.75rem;
+            color: #7a8aa8;
+            margin-top: 0.3rem;
+            padding-left: 0.5rem;
+        }
+
+        /* ---------- Terms ---------- */
+        .terms {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.6rem;
+            margin: 0.8rem 0 1.5rem;
+            font-size: 0.85rem;
+            color: #2d4373;
+        }
+
+        .terms input[type="checkbox"] {
+            width: 1.1rem;
+            height: 1.1rem;
+            margin-top: 0.1rem;
+            accent-color: #4a6fa5;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        .terms a {
+            color: #4a6fa5;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .terms a:hover {
+            text-decoration: underline;
+        }
+
+        /* ---------- Register Button ---------- */
+        .register-btn {
+            width: 100%;
+            padding: 0.9rem;
+            background: linear-gradient(135deg, #1a2a6c, #4a6fa5);
+            border: none;
+            border-radius: 1rem;
+            color: white;
+            font-size: 1.05rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+        }
+
+        .register-btn:hover {
+            background: linear-gradient(135deg, #0f1a45, #3a5f8f);
+            transform: scale(1.02);
+            box-shadow: 0 8px 24px rgba(26, 42, 108, 0.4);
+        }
+
+        .register-btn:active {
+            transform: scale(0.97);
+        }
+
+        /* ---------- Footer ---------- */
+        .register-footer {
+            text-align: center;
+            margin-top: 1.8rem;
+            color: #5a6c8a;
+            font-size: 0.9rem;
+        }
+
+        .register-footer a {
+            color: #4a6fa5;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .register-footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* ---------- Responsive ---------- */
+        @media (max-width: 480px) {
+            .register-card {
+                padding: 2rem 1.25rem;
+            }
+            .register-header h1 {
+                font-size: 1.5rem;
+            }
+            .form-group input,
+            .form-group select {
+                padding: 0.75rem 1rem 0.75rem 2.6rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="register-card">
+        <!-- Header -->
+        <div class="register-header">
+            <div class="logo"><i class="fas fa-user-graduate"></i></div>
+            <h1>Create Account</h1>
+            <p>Join the college dashboard</p>
+        </div>
+
+        <!-- Registration Form -->
+        <form id="registerForm" onsubmit="event.preventDefault(); alert('Registration successful (demo)');">
+            <!-- Full Name -->
+            <div class="form-group">
+                <label for="fullname">Full Name</label>
+                <i class="fas fa-user input-icon"></i>
+                <input type="text" id="fullname" placeholder="e.g. John Doe" required />
+            </div>
+
+            <!-- Email -->
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <i class="fas fa-envelope input-icon"></i>
+                <input type="email" id="email" placeholder="john@college.edu" required />
+            </div>
+
+            <!-- Username -->
+            <div class="form-group">
+                <label for="username">Username</label>
+                <i class="fas fa-id-card input-icon"></i>
+                <input type="text" id="username" placeholder="Choose a username" required />
+            </div>
+
+            <!-- Role / Department -->
+            <div class="form-group">
+                <label for="role">Role</label>
+                <i class="fas fa-graduation-cap input-icon"></i>
+                <select id="role" required>
+                    <option value="" disabled selected>Select your role</option>
+                    <option value="student">Student</option>
+                    <option value="faculty">Faculty / Staff</option>
+                    <option value="admin">Administrator</option>
+                </select>
+            </div>
+
+            <!-- Password -->
+            <div class="form-group">
+                <label for="password">Password</label>
+                <i class="fas fa-lock input-icon"></i>
+                <input type="password" id="password" placeholder="Min 8 characters" required />
+                <div class="password-hint">Must be at least 8 characters with a mix of letters &amp; numbers</div>
+            </div>
+
+            <!-- Confirm Password -->
+            <div class="form-group">
+                <label for="confirm-password">Confirm Password</label>
+                <i class="fas fa-check-circle input-icon"></i>
+                <input type="password" id="confirm-password" placeholder="Re-enter your password" required />
+            </div>
+
+            <!-- Terms -->
+            <div class="terms">
+                <input type="checkbox" id="termsCheck" required />
+                <label for="termsCheck">
+                    I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+                </label>
+            </div>
+
+            <button type="submit" class="register-btn">
+                <i class="fas fa-user-plus"></i> Register
+            </button>
+        </form>
+
+        <!-- Footer -->
+        <div class="register-footer">
+            <p>Already have an account? <a href="#">Sign in</a></p>
+            <p style="margin-top: 0.3rem; font-size: 0.8rem;">&copy; 2025 College Name</p>
+        </div>
+    </div>
+</body>
+</html>
